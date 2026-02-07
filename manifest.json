@@ -1,11 +1,12 @@
 {
+  "$schema": "https://digitalkneeboardsimulator.com/schemas/template-manifest.v1.json",
   "version": 1,
   "pack": {
-    "id": "custom-mission-card",
-    "name": "Custom Mission Card",
-    "description": "Single-page consolidated kneeboard template",
-    "author": "Custom",
-    "group": "Custom Templates",
+    "id": "test-external-pack",
+    "name": "Test External Templates",
+    "description": "Test templates for verifying external template binding",
+    "author": "Vibeboard Test",
+    "group": "Test Templates",
     "pilotsCount": 4,
     "defaultTheme": "light"
   },
