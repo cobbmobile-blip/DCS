@@ -1,12 +1,11 @@
 {
-  "$schema": "https://digitalkneeboardsimulator.com/schemas/template-manifest.v1.json",
   "version": 1,
   "pack": {
-    "id": "optimized-kneeboard-pack",
-    "name": "Optimized Mission Kneeboard",
-    "description": "Single-page consolidated kneeboard template with all critical mission data",
-    "author": "Custom Template",
-    "group": "Optimized Templates",
+    "id": "custom-mission-card",
+    "name": "Custom Mission Card",
+    "description": "Single-page consolidated kneeboard template",
+    "author": "Custom",
+    "group": "Custom Templates",
     "pilotsCount": 4,
     "defaultTheme": "light"
   },
