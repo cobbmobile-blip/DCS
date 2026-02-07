@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission Card - Consolidated</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        background: #f5f5f5;
+        color: #000;
+        width: 768px;
+        height: 1024px;
+        padding: 4px;
+      }
+      h1 {
+        font-size: 14px;
+        text-align: center;
+        margin-bottom: 2px;
+        background: #000;
+        color: #fff;
+        padding: 3px;
+        text-transform: uppercase;
+      }
+      h2 {
+        font-size: 10px;
+        background: #333;
+        color: #fff;
+        padding: 2px 4px;
+        margin: 0;
+        text-transform: uppercase;
+      }
+      .section {
+        border: 1px solid #333;
+        margin-bottom: 2px;
+        background: #fff;
+      }
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2px;
+      }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 2px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 10px;
+      }
+      th,
+      td {
+        border: 1px solid #333;
+        padding: 2px 4px;
+        text-align: left;
+      }
+      th {
+        background: #ddd;
+        font-weight: bold;
+        font-size: 10px;
+      }
+      .compact-row {
+        display: flex;
+        border-bottom: 1px solid #ddd;
+      }
+      .compact-row:last-child {
+        border-bottom: none;
+      }
+      .compact-label {
+        width: 90px;
+        padding: 2px 4px;
+        background: #eee;
+        font-weight: bold;
+        font-size: 10px;
+      }
+      .compact-value {
+        flex: 1;
+        padding: 2px 4px;
+        min-height: 16px;
+        font-size: 10px;
+      }
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1px;
+        font-size: 10px;
+      }
+      .info-cell {
+        border: 1px solid #ddd;
+        padding: 2px 3px;
+      }
+      .info-label {
+        background: #eee;
+        font-weight: bold;
+      }
+      .dense-table td,
+      .dense-table th {
+        padding: 2px 4px;
+        font-size: 10px;
+        line-height: 1.2;
+        height: 16px;
+      }
+      .comms-table td,
+      .comms-table th {
+        padding: 2px 4px;
+        font-size: 10px;
+        line-height: 1.2;
+        height: 16px;
+      }
+      .notes-box {
+        min-height: 40px;
+        padding: 2px;
+        border: 1px solid #ddd;
+        background: #fff;
+        font-size: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header with Mission Info and Performance Data -->
+    <div class="section" style="margin-bottom: 2px;">
+      <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 1px; padding: 2px;">
+        <div class="info-cell info-label">Date</div>
+        <div class="info-cell" id="dt-date"></div>
+        <div class="info-cell info-label">Time</div>
+        <div class="info-cell"><span id="dt-time"></span><span id="dt-type"></span></div>
+        <div class="info-cell info-label">Package</div>
+        <div class="info-cell" id="misc-package"></div>
+        <div class="info-cell info-label">Joker</div>
+        <div class="info-cell" id="misc-joker"></div>
+        
+        <div class="info-cell info-label">Bingo</div>
+        <div class="info-cell" id="misc-bingo"></div>
+        <div class="info-cell info-label">ALOW</div>
+        <div class="info-cell" id="misc-cara-alow"></div>
+        <div class="info-cell info-label">MSL Floor</div>
+        <div class="info-cell" id="misc-msl-floor"></div>
+        <div class="info-cell info-label">Gross Wt</div>
+        <div class="info-cell" id="told-gross-wt"></div>
+        
+        <div class="info-cell info-label">Rotation</div>
+        <div class="info-cell" id="told-rotation"></div>
+        <div class="info-cell info-label">T/O Fuel</div>
+        <div class="info-cell" id="told-to-fuel"></div>
+        <div class="info-cell info-label">Landing</div>
+        <div class="info-cell" id="told-landing"></div>
+        <div class="info-cell"></div>
+        <div class="info-cell"></div>
+      </div>
+    </div>
+
+    <!-- Flight/Crew Section -->
+
+    <!-- Flight/Crew Section -->
+    <div class="section">
+      <h2>Flight</h2>
+      <table class="dense-table">
+        <thead>
+          <tr>
+            <th style="width: 30px">#</th>
+            <th style="width: 90px">Callsign</th>
+            <th style="width: 90px">Crew</th>
+            <th style="width: 90px">A/A TCN</th>
+            <th style="width: 90px">M1/M3</th>
+            <th style="width: 90px" data-collapsible-column="stn">STN</th>
+            <th style="width: 90px" data-collapsible-column="laser">LSR</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td id="cr-1-cs"></td>
+            <td id="cr-1-crew"></td>
+            <td id="cr-1-aa"></td>
+            <td id="cr-1-mode3"></td>
+            <td data-collapsible-column="stn" id="cr-1-stn"></td>
+            <td data-collapsible-column="laser" id="cr-1-laser"></td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td id="cr-2-cs"></td>
+            <td id="cr-2-crew"></td>
+            <td id="cr-2-aa"></td>
+            <td id="cr-2-mode3"></td>
+            <td data-collapsible-column="stn" id="cr-2-stn"></td>
+            <td data-collapsible-column="laser" id="cr-2-laser"></td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td id="cr-3-cs"></td>
+            <td id="cr-3-crew"></td>
+            <td id="cr-3-aa"></td>
+            <td id="cr-3-mode3"></td>
+            <td data-collapsible-column="stn" id="cr-3-stn"></td>
+            <td data-collapsible-column="laser" id="cr-3-laser"></td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td id="cr-4-cs"></td>
+            <td id="cr-4-crew"></td>
+            <td id="cr-4-aa"></td>
+            <td id="cr-4-mode3"></td>
+            <td data-collapsible-column="stn" id="cr-4-stn"></td>
+            <td data-collapsible-column="laser" id="cr-4-laser"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Communications and Notes Side by Side -->
+    <div class="grid-2">
+      <!-- Communications - Left Column -->
+      <div class="section">
+        <h2>Communications</h2>
+        <table class="comms-table">
+          <thead>
+            <tr>
+              <th style="width: 70px">Frequency</th>
+              <th style="width: 70px">Color</th>
+              <th style="width: 70px">Agency</th>
+              <th style="width: 25px">Ch</th>
+              <th style="width: 70px">Frequency</th>
+              <th style="width: 70px">Agency</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="co-1-freq1"></td>
+              <td id="co-1-color1"></td>
+              <td id="co-1-agency1"></td>
+              <td>1</td>
+              <td id="co-1-freq2"></td>
+              <td id="co-1-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-2-freq1"></td>
+              <td id="co-2-color1"></td>
+              <td id="co-2-agency1"></td>
+              <td>2</td>
+              <td id="co-2-freq2"></td>
+              <td id="co-2-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-3-freq1"></td>
+              <td id="co-3-color1"></td>
+              <td id="co-3-agency1"></td>
+              <td>3</td>
+              <td id="co-3-freq2"></td>
+              <td id="co-3-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-4-freq1"></td>
+              <td id="co-4-color1"></td>
+              <td id="co-4-agency1"></td>
+              <td>4</td>
+              <td id="co-4-freq2"></td>
+              <td id="co-4-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-5-freq1"></td>
+              <td id="co-5-color1"></td>
+              <td id="co-5-agency1"></td>
+              <td>5</td>
+              <td id="co-5-freq2"></td>
+              <td id="co-5-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-6-freq1"></td>
+              <td id="co-6-color1"></td>
+              <td id="co-6-agency1"></td>
+              <td>6</td>
+              <td id="co-6-freq2"></td>
+              <td id="co-6-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-7-freq1"></td>
+              <td id="co-7-color1"></td>
+              <td id="co-7-agency1"></td>
+              <td>7</td>
+              <td id="co-7-freq2"></td>
+              <td id="co-7-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-8-freq1"></td>
+              <td id="co-8-color1"></td>
+              <td id="co-8-agency1"></td>
+              <td>8</td>
+              <td id="co-8-freq2"></td>
+              <td id="co-8-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-9-freq1"></td>
+              <td id="co-9-color1"></td>
+              <td id="co-9-agency1"></td>
+              <td>9</td>
+              <td id="co-9-freq2"></td>
+              <td id="co-9-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-10-freq1"></td>
+              <td id="co-10-color1"></td>
+              <td id="co-10-agency1"></td>
+              <td>10</td>
+              <td id="co-10-freq2"></td>
+              <td id="co-10-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-11-freq1"></td>
+              <td id="co-11-color1"></td>
+              <td id="co-11-agency1"></td>
+              <td>11</td>
+              <td id="co-11-freq2"></td>
+              <td id="co-11-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-12-freq1"></td>
+              <td id="co-12-color1"></td>
+              <td id="co-12-agency1"></td>
+              <td>12</td>
+              <td id="co-12-freq2"></td>
+              <td id="co-12-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-13-freq1"></td>
+              <td id="co-13-color1"></td>
+              <td id="co-13-agency1"></td>
+              <td>13</td>
+              <td id="co-13-freq2"></td>
+              <td id="co-13-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-14-freq1"></td>
+              <td id="co-14-color1"></td>
+              <td id="co-14-agency1"></td>
+              <td>14</td>
+              <td id="co-14-freq2"></td>
+              <td id="co-14-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-15-freq1"></td>
+              <td id="co-15-color1"></td>
+              <td id="co-15-agency1"></td>
+              <td>15</td>
+              <td id="co-15-freq2"></td>
+              <td id="co-15-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-16-freq1"></td>
+              <td id="co-16-color1"></td>
+              <td id="co-16-agency1"></td>
+              <td>16</td>
+              <td id="co-16-freq2"></td>
+              <td id="co-16-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-17-freq1"></td>
+              <td id="co-17-color1"></td>
+              <td id="co-17-agency1"></td>
+              <td>17</td>
+              <td id="co-17-freq2"></td>
+              <td id="co-17-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-18-freq1"></td>
+              <td id="co-18-color1"></td>
+              <td id="co-18-agency1"></td>
+              <td>18</td>
+              <td id="co-18-freq2"></td>
+              <td id="co-18-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-19-freq1"></td>
+              <td id="co-19-color1"></td>
+              <td id="co-19-agency1"></td>
+              <td>19</td>
+              <td id="co-19-freq2"></td>
+              <td id="co-19-agency2"></td>
+            </tr>
+            <tr>
+              <td id="co-20-freq1"></td>
+              <td id="co-20-color1"></td>
+              <td id="co-20-agency1"></td>
+              <td>20</td>
+              <td id="co-20-freq2"></td>
+              <td id="co-20-agency2"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Notes - Right Column -->
+      <div class="section">
+        <h2>Notes</h2>
+        <div class="notes-box" id="misc-notes" style="min-height: 400px"></div>
+      </div>
+    </div>
+
+    <!-- Airfields and Support Assets -->
+    <div class="grid-2">
+      <!-- Home Plate / Divert -->
+      <div class="section">
+        <h2>Airfields</h2>
+        <table class="dense-table">
+          <thead>
+            <tr>
+              <th>Field</th>
+              <th>TCN</th>
+              <th>Freq</th>
+              <th>Elev</th>
+              <th>RW</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="hp-1-field"></td>
+              <td id="hp-1-tcn"></td>
+              <td id="hp-1-vuhf"></td>
+              <td id="hp-1-elv"></td>
+              <td id="hp-1-rw"></td>
+            </tr>
+            <tr>
+              <td id="hp-2-field"></td>
+              <td id="hp-2-tcn"></td>
+              <td id="hp-2-vuhf"></td>
+              <td id="hp-2-elv"></td>
+              <td id="hp-2-rw"></td>
+            </tr>
+            <tr>
+              <td id="hp-3-field"></td>
+              <td id="hp-3-tcn"></td>
+              <td id="hp-3-vuhf"></td>
+              <td id="hp-3-elv"></td>
+              <td id="hp-3-rw"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Support Assets -->
+      <div class="section">
+        <h2>Support</h2>
+        <table class="dense-table">
+          <thead>
+            <tr>
+              <th>Callsign</th>
+              <th>Location</th>
+              <th>TCN</th>
+              <th>Freq</th>
+              <th>Alt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="tk-1-code"></td>
+              <td id="tk-1-location"></td>
+              <td id="tk-1-tcn"></td>
+              <td id="tk-1-vuhf"></td>
+              <td id="tk-1-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-2-code"></td>
+              <td id="tk-2-location"></td>
+              <td id="tk-2-tcn"></td>
+              <td id="tk-2-vuhf"></td>
+              <td id="tk-2-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-3-code"></td>
+              <td id="tk-3-location"></td>
+              <td id="tk-3-tcn"></td>
+              <td id="tk-3-vuhf"></td>
+              <td id="tk-3-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-4-code"></td>
+              <td id="tk-4-location"></td>
+              <td id="tk-4-tcn"></td>
+              <td id="tk-4-vuhf"></td>
+              <td id="tk-4-alt"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Key Waypoints Summary -->
+    <div class="section">
+      <h2>Key Waypoints</h2>
+      <table class="dense-table">
+        <thead>
+          <tr>
+            <th style="width: 50px">WP</th>
+            <th>Name</th>
+            <th>Coordinates</th>
+            <th>Elev</th>
+            <th>TOT</th>
+            <th>Remarks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="fp-1-wp"></td>
+            <td id="fp-1-desc"></td>
+            <td id="fp-1-lat-lon"></td>
+            <td id="fp-1-elev"></td>
+            <td id="fp-1-tot"></td>
+            <td id="fp-1-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-2-wp"></td>
+            <td id="fp-2-desc"></td>
+            <td id="fp-2-lat-lon"></td>
+            <td id="fp-2-elev"></td>
+            <td id="fp-2-tot"></td>
+            <td id="fp-2-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-3-wp"></td>
+            <td id="fp-3-desc"></td>
+            <td id="fp-3-lat-lon"></td>
+            <td id="fp-3-elev"></td>
+            <td id="fp-3-tot"></td>
+            <td id="fp-3-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-4-wp"></td>
+            <td id="fp-4-desc"></td>
+            <td id="fp-4-lat-lon"></td>
+            <td id="fp-4-elev"></td>
+            <td id="fp-4-tot"></td>
+            <td id="fp-4-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-5-wp"></td>
+            <td id="fp-5-desc"></td>
+            <td id="fp-5-lat-lon"></td>
+            <td id="fp-5-elev"></td>
+            <td id="fp-5-tot"></td>
+            <td id="fp-5-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-6-wp"></td>
+            <td id="fp-6-desc"></td>
+            <td id="fp-6-lat-lon"></td>
+            <td id="fp-6-elev"></td>
+            <td id="fp-6-tot"></td>
+            <td id="fp-6-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-7-wp"></td>
+            <td id="fp-7-desc"></td>
+            <td id="fp-7-lat-lon"></td>
+            <td id="fp-7-elev"></td>
+            <td id="fp-7-tot"></td>
+            <td id="fp-7-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-8-wp"></td>
+            <td id="fp-8-desc"></td>
+            <td id="fp-8-lat-lon"></td>
+            <td id="fp-8-elev"></td>
+            <td id="fp-8-tot"></td>
+            <td id="fp-8-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-9-wp"></td>
+            <td id="fp-9-desc"></td>
+            <td id="fp-9-lat-lon"></td>
+            <td id="fp-9-elev"></td>
+            <td id="fp-9-tot"></td>
+            <td id="fp-9-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-10-wp"></td>
+            <td id="fp-10-desc"></td>
+            <td id="fp-10-lat-lon"></td>
+            <td id="fp-10-elev"></td>
+            <td id="fp-10-tot"></td>
+            <td id="fp-10-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-11-wp"></td>
+            <td id="fp-11-desc"></td>
+            <td id="fp-11-lat-lon"></td>
+            <td id="fp-11-elev"></td>
+            <td id="fp-11-tot"></td>
+            <td id="fp-11-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-12-wp"></td>
+            <td id="fp-12-desc"></td>
+            <td id="fp-12-lat-lon"></td>
+            <td id="fp-12-elev"></td>
+            <td id="fp-12-tot"></td>
+            <td id="fp-12-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-13-wp"></td>
+            <td id="fp-13-desc"></td>
+            <td id="fp-13-lat-lon"></td>
+            <td id="fp-13-elev"></td>
+            <td id="fp-13-tot"></td>
+            <td id="fp-13-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-14-wp"></td>
+            <td id="fp-14-desc"></td>
+            <td id="fp-14-lat-lon"></td>
+            <td id="fp-14-elev"></td>
+            <td id="fp-14-tot"></td>
+            <td id="fp-14-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-15-wp"></td>
+            <td id="fp-15-desc"></td>
+            <td id="fp-15-lat-lon"></td>
+            <td id="fp-15-elev"></td>
+            <td id="fp-15-tot"></td>
+            <td id="fp-15-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-16-wp"></td>
+            <td id="fp-16-desc"></td>
+            <td id="fp-16-lat-lon"></td>
+            <td id="fp-16-elev"></td>
+            <td id="fp-16-tot"></td>
+            <td id="fp-16-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-17-wp"></td>
+            <td id="fp-17-desc"></td>
+            <td id="fp-17-lat-lon"></td>
+            <td id="fp-17-elev"></td>
+            <td id="fp-17-tot"></td>
+            <td id="fp-17-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-18-wp"></td>
+            <td id="fp-18-desc"></td>
+            <td id="fp-18-lat-lon"></td>
+            <td id="fp-18-elev"></td>
+            <td id="fp-18-tot"></td>
+            <td id="fp-18-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-19-wp"></td>
+            <td id="fp-19-desc"></td>
+            <td id="fp-19-lat-lon"></td>
+            <td id="fp-19-elev"></td>
+            <td id="fp-19-tot"></td>
+            <td id="fp-19-rem"></td>
+          </tr>
+          <tr>
+            <td id="fp-20-wp"></td>
+            <td id="fp-20-desc"></td>
+            <td id="fp-20-lat-lon"></td>
+            <td id="fp-20-elev"></td>
+            <td id="fp-20-tot"></td>
+            <td id="fp-20-rem"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="text-align: center; margin-top: 6px; color: #666; font-size: 9px">
+      Optimized Mission Card - Page 1
+    </p>
+  </body>
+</html>
