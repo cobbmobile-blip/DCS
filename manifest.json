@@ -14,6 +14,11 @@
     {
       "type": "page1",
       "file": "mission-card.html",
+      "label": "Coord Card"
+    },
+     {
+      "type": "page2",
+      "file": "threats-targets-map.html",
       "label": "Mission Card"
     }
   ]
