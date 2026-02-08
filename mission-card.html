@@ -11,45 +11,45 @@
         box-sizing: border-box;
       }
       body {
-        font-family: "Courier New", monospace;
-        font-size: 10px;
+        font-family: "Liberation Sans", "Arial", "Helvetica", sans-serif;
+        font-size: 12px;
         background: #f5f5f5;
         color: #000;
-        width: 768px;
-        height: 1024px;
-        padding: 4px;
+        width: 1000px;
+        height: 1500px;
+        padding: 6px;
       }
       h1 {
-        font-size: 14px;
+        font-size: 18px;
         text-align: center;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
         background: #000;
         color: #fff;
-        padding: 3px;
+        padding: 5px;
         text-transform: uppercase;
       }
       h2 {
-        font-size: 10px;
+        font-size: 12px;
         background: #333;
         color: #fff;
-        padding: 2px 4px;
+        padding: 3px 6px;
         margin: 0;
         text-transform: uppercase;
       }
       .section {
         border: 1px solid #333;
-        margin-bottom: 2px;
+        margin-bottom: 4px;
         background: #fff;
       }
       .grid-2 {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 2px;
+        gap: 4px;
       }
       .grid-3 {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 2px;
+        gap: 4px;
       }
       table {
         width: 100%;
@@ -75,7 +75,7 @@
         border-bottom: none;
       }
       .compact-label {
-        width: 90px;
+        width: 117px;
         padding: 2px 4px;
         background: #eee;
         font-weight: bold;
@@ -90,12 +90,12 @@
       .info-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 1px;
-        font-size: 10px;
+        gap: 2px;
+        font-size: 12px;
       }
       .info-cell {
         border: 1px solid #ddd;
-        padding: 2px 3px;
+        padding: 3px 4px;
       }
       .info-label {
         background: #eee;
@@ -103,31 +103,31 @@
       }
       .dense-table td,
       .dense-table th {
-        padding: 2px 4px;
-        font-size: 10px;
-        line-height: 1.2;
-        height: 16px;
+        padding: 3px 6px;
+        font-size: 12px;
+        line-height: 1.3;
+        height: 20px;
       }
       .comms-table td,
       .comms-table th {
-        padding: 2px 4px;
-        font-size: 10px;
-        line-height: 1.2;
-        height: 16px;
+        padding: 3px 6px;
+        font-size: 12px;
+        line-height: 1.3;
+        height: 20px;
       }
       .notes-box {
         min-height: 40px;
-        padding: 2px;
+        padding: 4px;
         border: 1px solid #ddd;
         background: #fff;
-        font-size: 10px;
+        font-size: 12px;
       }
     </style>
   </head>
   <body>
     <!-- Header with Mission Info and Performance Data -->
     <div class="section" style="margin-bottom: 2px;">
-      <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 1px; padding: 2px;">
+      <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; padding: 4px;">
         <div class="info-cell info-label">Date</div>
         <div class="info-cell" id="dt-date"></div>
         <div class="info-cell info-label">Time</div>
@@ -166,12 +166,12 @@
         <thead>
           <tr>
             <th style="width: 30px">#</th>
-            <th style="width: 90px">Callsign</th>
-            <th style="width: 90px">Crew</th>
-            <th style="width: 90px">A/A TCN</th>
-            <th style="width: 90px">M1/M3</th>
-            <th style="width: 90px" data-collapsible-column="stn">STN</th>
-            <th style="width: 90px" data-collapsible-column="laser">LSR</th>
+            <th style="width: 117px">Callsign</th>
+            <th style="width: 117px">Crew</th>
+            <th style="width: 117px">A/A TCN</th>
+            <th style="width: 117px">M1/M3</th>
+            <th style="width: 117px" data-collapsible-column="stn">STN</th>
+            <th style="width: 117px" data-collapsible-column="laser">LSR</th>
           </tr>
         </thead>
         <tbody>
@@ -223,12 +223,12 @@
         <table class="comms-table">
           <thead>
             <tr>
-              <th style="width: 70px">Frequency</th>
-              <th style="width: 70px">Color</th>
-              <th style="width: 70px">Agency</th>
+              <th style="width: 91px">Frequency</th>
+              <th style="width: 91px">Color</th>
+              <th style="width: 91px">Agency</th>
               <th style="width: 25px">Ch</th>
-              <th style="width: 70px">Frequency</th>
-              <th style="width: 70px">Agency</th>
+              <th style="width: 91px">Frequency</th>
+              <th style="width: 91px">Agency</th>
             </tr>
           </thead>
           <tbody>
@@ -399,7 +399,7 @@
       <!-- Notes - Right Column -->
       <div class="section">
         <h2>Notes</h2>
-        <div class="notes-box" id="misc-notes" style="min-height: 400px"></div>
+        <div class="notes-box" id="misc-notes" style="min-height: 585px"></div>
       </div>
     </div>
 
@@ -411,11 +411,11 @@
         <table class="dense-table">
           <thead>
             <tr>
-              <th>Field</th>
-              <th>TCN</th>
-              <th>Freq</th>
-              <th>Elev</th>
-              <th>RW</th>
+              <th style="width: 100px">Field</th>
+              <th style="width: 60px">TCN</th>
+              <th style="width: 60px">Freq</th>
+              <th style="width: 60px">Elev</th>
+              <th style="width: 100px">RW</th>
             </tr>
           </thead>
           <tbody>
