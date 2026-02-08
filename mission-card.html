@@ -126,38 +126,60 @@
         font-size: 12px;
         white-space: pre-wrap;
       }
+      .top-container {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 4px;
+      }
+      .logo-container {
+        flex-shrink: 0;
+      }
+      .logo-container img {
+        display: block;
+        height: 100%;
+        width: auto;
+      }
     </style>
   </head>
   <body>
-    <!-- Header with Mission Info and Performance Data -->
-    <div class="section" style="margin-bottom: 2px;">
-      <div style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; padding: 4px;">
-        <div class="info-cell info-label">Date</div>
-        <div class="info-cell" id="dt-date"></div>
-        <div class="info-cell info-label">Time</div>
-        <div class="info-cell"><span id="dt-time"></span><span id="dt-type"></span></div>
-        <div class="info-cell info-label">Package</div>
-        <div class="info-cell" id="misc-package"></div>
-        <div class="info-cell info-label">Joker</div>
-        <div class="info-cell" id="misc-joker"></div>
-        
-        <div class="info-cell info-label">Bingo</div>
-        <div class="info-cell" id="misc-bingo"></div>
-        <div class="info-cell info-label">ALOW</div>
-        <div class="info-cell" id="misc-cara-alow"></div>
-        <div class="info-cell info-label">MSL Floor</div>
-        <div class="info-cell" id="misc-msl-floor"></div>
-        <div class="info-cell info-label">Gross Wt</div>
-        <div class="info-cell" id="told-gross-wt"></div>
-        
-        <div class="info-cell info-label">Rotation</div>
-        <div class="info-cell" id="told-rotation"></div>
-        <div class="info-cell info-label">T/O Fuel</div>
-        <div class="info-cell" id="told-to-fuel"></div>
-        <div class="info-cell info-label">Landing</div>
-        <div class="info-cell" id="told-landing"></div>
-        <div class="info-cell"></div>
-        <div class="info-cell"></div>
+    <!-- Top Section with Logo and Mission Info -->
+    <div class="top-container">
+      <!-- Logo -->
+      <div class="logo-container" style="width: 120px;">
+        <img src="https://raw.githubusercontent.com/cobbmobile-blip/DCS/main/SAMURAI_2.png" alt="Logo" style="height: 80px; width: 120px; object-fit: contain;">
+      </div>
+      
+      <!-- Header with Mission Info and Performance Data -->
+      <div class="section" style="margin-bottom: 0; flex: 1;">
+        <div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 2px; padding: 4px;">
+          <div class="info-cell info-label">Date</div>
+          <div class="info-cell" id="dt-date"></div>
+          <div class="info-cell info-label">Time</div>
+          <div class="info-cell"><span id="dt-time"></span><span id="dt-type"></span></div>
+          <div class="info-cell info-label">Package</div>
+          <div class="info-cell" id="misc-package"></div>
+          
+          <div class="info-cell info-label">Joker</div>
+          <div class="info-cell" id="misc-joker"></div>
+          <div class="info-cell info-label">Bingo</div>
+          <div class="info-cell" id="misc-bingo"></div>
+          <div class="info-cell info-label">ALOW</div>
+          <div class="info-cell" id="misc-cara-alow"></div>
+          
+          <div class="info-cell info-label">MSL Floor</div>
+          <div class="info-cell" id="misc-msl-floor"></div>
+          <div class="info-cell info-label">Gross Wt</div>
+          <div class="info-cell" id="told-gross-wt"></div>
+          <div class="info-cell info-label">Rotation</div>
+          <div class="info-cell" id="told-rotation"></div>
+          
+          <div class="info-cell info-label">T/O Fuel</div>
+          <div class="info-cell" id="told-to-fuel"></div>
+          <div class="info-cell info-label">Landing</div>
+          <div class="info-cell" id="told-landing"></div>
+          <div class="info-cell"></div>
+          <div class="info-cell"></div>
+        </div>
       </div>
     </div>
 
@@ -410,92 +432,43 @@
       </div>
     </div>
 
-    <!-- Airfields and Support Assets -->
-    <div class="grid-2">
-      <!-- Home Plate / Divert -->
-      <div class="section">
-        <h2>Airfields</h2>
-        <table class="dense-table">
-          <thead>
-            <tr>
-              <th style="width: 100px">Field</th>
-              <th style="width: 60px">TCN</th>
-              <th style="width: 60px">Freq</th>
-              <th style="width: 60px">Elev</th>
-              <th style="width: 100px">RW</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="hp-1-field"></td>
-              <td id="hp-1-tcn"></td>
-              <td id="hp-1-vuhf"></td>
-              <td id="hp-1-elv"></td>
-              <td id="hp-1-rw"></td>
-            </tr>
-            <tr>
-              <td id="hp-2-field"></td>
-              <td id="hp-2-tcn"></td>
-              <td id="hp-2-vuhf"></td>
-              <td id="hp-2-elv"></td>
-              <td id="hp-2-rw"></td>
-            </tr>
-            <tr>
-              <td id="hp-3-field"></td>
-              <td id="hp-3-tcn"></td>
-              <td id="hp-3-vuhf"></td>
-              <td id="hp-3-elv"></td>
-              <td id="hp-3-rw"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- Support Assets -->
-      <div class="section">
-        <h2>Support</h2>
-        <table class="dense-table">
-          <thead>
-            <tr>
-              <th>Callsign</th>
-              <th>Location</th>
-              <th>TCN</th>
-              <th>Freq</th>
-              <th>Alt</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td id="tk-1-code"></td>
-              <td id="tk-1-location"></td>
-              <td id="tk-1-tcn"></td>
-              <td id="tk-1-vuhf"></td>
-              <td id="tk-1-alt"></td>
-            </tr>
-            <tr>
-              <td id="tk-2-code"></td>
-              <td id="tk-2-location"></td>
-              <td id="tk-2-tcn"></td>
-              <td id="tk-2-vuhf"></td>
-              <td id="tk-2-alt"></td>
-            </tr>
-            <tr>
-              <td id="tk-3-code"></td>
-              <td id="tk-3-location"></td>
-              <td id="tk-3-tcn"></td>
-              <td id="tk-3-vuhf"></td>
-              <td id="tk-3-alt"></td>
-            </tr>
-            <tr>
-              <td id="tk-4-code"></td>
-              <td id="tk-4-location"></td>
-              <td id="tk-4-tcn"></td>
-              <td id="tk-4-vuhf"></td>
-              <td id="tk-4-alt"></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <!-- Airfields -->
+    <div class="section">
+      <h2>Airfields</h2>
+      <table class="dense-table">
+        <thead>
+          <tr>
+            <th style="width: 100px">Field</th>
+            <th style="width: 60px">TCN</th>
+            <th style="width: 60px">Freq</th>
+            <th style="width: 60px">Elev</th>
+            <th style="width: 100px">RW</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="hp-1-field"></td>
+            <td id="hp-1-tcn"></td>
+            <td id="hp-1-vuhf"></td>
+            <td id="hp-1-elv"></td>
+            <td id="hp-1-rw"></td>
+          </tr>
+          <tr>
+            <td id="hp-2-field"></td>
+            <td id="hp-2-tcn"></td>
+            <td id="hp-2-vuhf"></td>
+            <td id="hp-2-elv"></td>
+            <td id="hp-2-rw"></td>
+          </tr>
+          <tr>
+            <td id="hp-3-field"></td>
+            <td id="hp-3-tcn"></td>
+            <td id="hp-3-vuhf"></td>
+            <td id="hp-3-elv"></td>
+            <td id="hp-3-rw"></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <!-- Key Waypoints Summary -->
