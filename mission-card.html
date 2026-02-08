@@ -146,7 +146,7 @@
     <div class="top-container">
       <!-- Logo -->
       <div class="logo-container" style="width: 80px;">
-        <img src="https://raw.githubusercontent.com/cobbmobile-blip/DCS/main/SAMURAI_2.png" alt="Logo" style="height: 1000px; width: 80px; object-fit: contain;">
+        <img src="https://raw.githubusercontent.com/cobbmobile-blip/DCS/main/SAMURAI_2.png" alt="Logo" style="height: 80px; width: 80px; object-fit: contain;">
       </div>
       
       <!-- Header with Mission Info and Performance Data -->
@@ -432,43 +432,92 @@
       </div>
     </div>
 
-    <!-- Airfields -->
-    <div class="section">
-      <h2>Airfields</h2>
-      <table class="dense-table">
-        <thead>
-          <tr>
-            <th style="width: 100px">Field</th>
-            <th style="width: 60px">TCN</th>
-            <th style="width: 60px">Freq</th>
-            <th style="width: 60px">Elev</th>
-            <th style="width: 100px">RW</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="hp-1-field"></td>
-            <td id="hp-1-tcn"></td>
-            <td id="hp-1-vuhf"></td>
-            <td id="hp-1-elv"></td>
-            <td id="hp-1-rw"></td>
-          </tr>
-          <tr>
-            <td id="hp-2-field"></td>
-            <td id="hp-2-tcn"></td>
-            <td id="hp-2-vuhf"></td>
-            <td id="hp-2-elv"></td>
-            <td id="hp-2-rw"></td>
-          </tr>
-          <tr>
-            <td id="hp-3-field"></td>
-            <td id="hp-3-tcn"></td>
-            <td id="hp-3-vuhf"></td>
-            <td id="hp-3-elv"></td>
-            <td id="hp-3-rw"></td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- Airfields and Support Assets -->
+    <div class="grid-2">
+      <!-- Airfields -->
+      <div class="section">
+        <h2>Airfields</h2>
+        <table class="dense-table">
+          <thead>
+            <tr>
+              <th style="width: 100px">Field</th>
+              <th style="width: 60px">TCN</th>
+              <th style="width: 60px">Freq</th>
+              <th style="width: 60px">Elev</th>
+              <th style="width: 100px">RW</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="hp-1-field"></td>
+              <td id="hp-1-tcn"></td>
+              <td id="hp-1-vuhf"></td>
+              <td id="hp-1-elv"></td>
+              <td id="hp-1-rw"></td>
+            </tr>
+            <tr>
+              <td id="hp-2-field"></td>
+              <td id="hp-2-tcn"></td>
+              <td id="hp-2-vuhf"></td>
+              <td id="hp-2-elv"></td>
+              <td id="hp-2-rw"></td>
+            </tr>
+            <tr>
+              <td id="hp-3-field"></td>
+              <td id="hp-3-tcn"></td>
+              <td id="hp-3-vuhf"></td>
+              <td id="hp-3-elv"></td>
+              <td id="hp-3-rw"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Support Assets -->
+      <div class="section">
+        <h2>Support</h2>
+        <table class="dense-table">
+          <thead>
+            <tr>
+              <th>Callsign</th>
+              <th>Location</th>
+              <th>TCN</th>
+              <th>Freq</th>
+              <th>Alt</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="tk-1-code"></td>
+              <td id="tk-1-location"></td>
+              <td id="tk-1-tcn"></td>
+              <td id="tk-1-vuhf"></td>
+              <td id="tk-1-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-2-code"></td>
+              <td id="tk-2-location"></td>
+              <td id="tk-2-tcn"></td>
+              <td id="tk-2-vuhf"></td>
+              <td id="tk-2-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-3-code"></td>
+              <td id="tk-3-location"></td>
+              <td id="tk-3-tcn"></td>
+              <td id="tk-3-vuhf"></td>
+              <td id="tk-3-alt"></td>
+            </tr>
+            <tr>
+              <td id="tk-4-code"></td>
+              <td id="tk-4-location"></td>
+              <td id="tk-4-tcn"></td>
+              <td id="tk-4-vuhf"></td>
+              <td id="tk-4-alt"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <!-- Key Waypoints Summary -->
