@@ -20,6 +20,11 @@
       "type": "page2",
       "file": "threats-targets-map.html",
       "label": "Mission Card"
+    },
+    {
+      "type": "notes",
+      "file": "notes.html",
+      "label": "Notes"
     }
   ]
 }
