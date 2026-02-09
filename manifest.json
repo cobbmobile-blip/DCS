@@ -22,7 +22,7 @@
       "label": "Mission Card"
     },
     {
-      "type": "notes",
+      "type": "page3",
       "file": "notes.html",
       "label": "Notes"
     }
